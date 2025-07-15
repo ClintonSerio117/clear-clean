@@ -4,9 +4,11 @@ import clintonSerioLogo from './assets/clinton-serio-logo.png'
 import dynamicBackground from './assets/dynamic-spiritual-background.jpg'
 import flameIcon from './assets/flame-icon.png'
 import PaymentGateway from './PaymentGateway'
+import AccessRequest from './AccessRequest';
+import AccessRequest from './pages/AccessRequest';
 
 function App() {
-  const [currentView, setCurrentView] = useState('armour') // 'armour', 'payment', 'workshop', 'blessing'
+  const [currentView, setCurrentView] = useState('armour'); // already there  const [currentView, setCurrentView] = useState('armour') // 'armour', 'payment', 'workshop', 'blessing'
   const [armourProgress, setArmourProgress] = useState({ morning: false, afternoon: false, evening: false })
   const [currentDay, setCurrentDay] = useState(1)
   const [completedDays, setCompletedDays] = useState(new Set())
@@ -363,8 +365,12 @@ function App() {
       pdfLink: '/assets/Day7_EnergyFieldMaintenance.pdf'
     }
   ]
-
-  const markArmourSectionComplete = (section) => {
+<button
+  onClick={() => setCurrentView('access')}
+  className="bg-blue-600 text-white px-4 py-2 rounded-lg m-4"
+>
+  Request Access
+</button>  const markArmourSectionComplete = (section) => {
     setArmourProgress(prev => ({
       ...prev,
       [section]: true
@@ -1167,6 +1173,7 @@ function App() {
         {currentView === 'armour' && renderArmourOfLight()}
         {currentView === 'workshop' && renderWorkshop()}
         {currentView === 'blessing' && renderBlessingMix()}
+        {currentView === 'access' && <AccessRequest />}     
       </div>
     </div>
   )
