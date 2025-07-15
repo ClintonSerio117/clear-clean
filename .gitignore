@@ -1,48 +1,22 @@
-import React, { useState } from "react";
-
-export default function AccessRequest() {
-  const [submitted, setSubmitted] = useState(false);
-
-  return (
-    <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow">
-      {!submitted ? (
-        <>
-          <h2 className="text-xl font-bold mb-4">Request Access</h2>
-          <form
-            action="/api/form"
-            method="POST"
-            data-vercel="true"
-            onSubmit={() => setSubmitted(true)}
-          >
-            <input type="hidden" name="form-name" value="access-request" />
-            <label className="block mb-2">
-              Email or Phone Number:
-              <input
-                type="text"
-                name="contact"
-                required
-                className="w-full mt-1 p-2 border rounded"
-                placeholder="Enter your email or phone"
-              />
-            </label>
-            <button
-              type="submit"
-              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
-            >
-              Request Code
-            </button>
-          </form>
-        </>
-      ) : (
-        <div>
-          <h2 className="text-xl font-bold mb-4">Thank you!</h2>
-          <p>
-            We’ve received your request. We’ll send you a code soon to unlock
-            further access.
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
-
+# Node modules
+node_modules/
+# Build output
+dist/
+build/
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# OS files
+.DS_Store
+Thumbs.db
+# Environment variables
+.env
+.env.local
+.env.*.local
+# IDE files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
