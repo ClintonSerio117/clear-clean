@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import flameIcon from './assets/flame-icon.png'
+import AccessRequest from "./pages/AccessRequest";
 
 const PaymentGateway = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ const PaymentGateway = ({ onClose, onSuccess }) => {
   })
   const [isProcessing, setIsProcessing] = useState(false)
   const [errors, setErrors] = useState({})
+  const [submitted, setSubmitted] = useState(false);
+  const [value, setValue] = useState("");
 
   const validateForm = () => {
     const newErrors = {}
@@ -83,6 +87,12 @@ Check your email within the next 5 minutes.`)
     }
   }
 
+  const handleAccessRequestSubmit = (e) => {
+    e.preventDefault();
+    // You can send the value to your backend or email service here
+    setSubmitted(true);
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -112,7 +122,8 @@ Check your email within the next 5 minutes.`)
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {!submitted ? (
+        <form onSubmit={handleAccessRequestSubmit} className="space-y-4">
           {/* Personal Information */}
           <div className="grid grid-cols-2 gap-4">
             <div>
@@ -286,6 +297,14 @@ Check your email within the next 5 minutes.`)
             </button>
           </div>
         </form>
+        ) : (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Thank you!</h2>
+            <p>
+              We’ve received your request. We’ll send you a code soon to unlock further access.
+            </p>
+          </div>
+        )}
 
         {/* Security Notice */}
         <div className="mt-6 text-center">
@@ -301,5 +320,14 @@ Check your email within the next 5 minutes.`)
   )
 }
 
-export default PaymentGateway
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<PaymentGateway />} />
+      <Route path="/access-request" element={<AccessRequest />} />
+    </Routes>
+  );
+}
+
+export default App
 
