@@ -103,8 +103,13 @@ function App() {
       ]
     }
   }
-
-  const workshopData = [
+<button
+  onClick={() => setCurrentView('access')}
+  className="bg-blue-600 text-white px-4 py-2 rounded-lg m-4"
+>
+  Request Access
+</button>
+    const workshopData = [
     {
       id: 1,
       title: 'Energy Field Awareness & Connection',
@@ -364,12 +369,7 @@ function App() {
       pdfLink: '/assets/Day7_EnergyFieldMaintenance.pdf'
     }
   ]
-<button
-  onClick={() => setCurrentView('access')}
-  className="bg-blue-600 text-white px-4 py-2 rounded-lg m-4"
->
-  Request Access
-</button>  const markArmourSectionComplete = (section) => {
+  const markArmourSectionComplete = (section) => {
     setArmourProgress(prev => ({
       ...prev,
       [section]: true
