@@ -20,3 +20,19 @@ Thumbs.db
 .idea/
 *.sublime-workspace
 *.sublime-project
+
+# Mac system files
+*.DS_Store
+
+# npm cache
+.npm/
+
+# Coverage reports
+coverage/
+*.lcov
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional: Ignore test output
+test-output/
