@@ -4,7 +4,6 @@ import clintonSerioLogo from './assets/clinton-serio-logo.png'
 import dynamicBackground from './assets/dynamic-spiritual-background.jpg'
 import flameIcon from './assets/flame-icon.png'
 import PaymentGateway from './PaymentGateway'
-import AccessRequest from './AccessRequest';
 import AccessRequest from './pages/AccessRequest';
 
 function App() {
